@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário para inserir novas Turmas </title>
+    <link rel="stylesheet" href="/admin/formAddAluno.css">
+    <link rel="stylesheet" href="/admin/validation.css">
+</head>
+
+<body>
+
+    <%-include('../partes/header')%>
+
+    <h1>Formulário para inserir novas Turmas </h1>
+
+    <form action="/turmas/salvar" method="post" class="student-form">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Nome da Turma" value="<%= turma.nome %>">
+        </div>
+
+        <div class="form-group">
+            <label for="sobrenome"> Ano </label>
+            <input type="text" id="ano" name="ano" placeholder="Ano da Turma"
+                value="<%= turma.ano %>">
+        </div>
+
+        <div class="form-group">
+            <label for="turmaSelect"> Selecione a Disciplina </label>
+            <select id="turmaSelect" name="id_disciplina_FK">
+
+                <option value=""> Selecione ! </option>
+
+                <% disciplinas.forEach(function(disciplina) { %>
+                    <option value="<%= disciplina.id_disciplina %>">
+                        <%= disciplina.nome %>
+                    </option>
+                    <% }); %>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="turmaSelect"> Selecione o Professor </label>
+            <select id="turmaSelect" name="id_func_FK">
+
+                <option value=""> Selecione ! </option>
+
+                <% professor.forEach(function(prof) { %>
+                    <option value="<%= prof.id_func %>">
+                        <%= `${prof.nome} ${prof.sobrenome}`%>
+                    </option>
+                    <% }); %>
+            </select>
+        </div>
+
+
+        <input type="submit" value="Enviar" class="submit-btn">
+
+        <div class="<%= validacao.length > 0 ? 'validation' : '' %>">
+
+            <%if(validacao.length>0){%>
+    
+                <div>
+                    <strong>Atenção!</strong>
+                    <ul>
+                        <%for(let i=0;i<validacao.length;i++){%>
+                            <li>
+                                <%=validacao[i].msg%>
+                            </li>
+                            <%}%>
+                    </ul>
+                </div>
+                <%}%>
+        </div>
+    </form>
+
+
+</body>
+
+</html>

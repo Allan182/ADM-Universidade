@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    text-decoration: none;
+    list-style: none;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.validation{
+    text-align: center;  
+    font-weight: bold;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 60vh;
+    align-items: center;
+}
+
+.form-login {
+    width: 32.5%;
+    background-color: #f7f7f7f0;
+    display: flex;
+    height: 45vh;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 1px 10px 1px black;
+}
+
+.label-input {
+    gap: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.box-input {
+    width: 50%;
+    padding: 10px 0;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+.box-input label {
+    font-size: 1.4rem;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.673);
+}
+
+.box-input input {
+    width: 75%;
+    margin: 0.5rem 0;
+    padding: 5px 0;
+    text-align: center;
+    border: 1px solid rgb(215, 215, 215);
+}
+
+.box-submit {
+    width: 50%;
+}
+
+.box-submit button {
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin-top: 10px;
+    width: 100%;
+    padding: 1rem 0;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px rgb(0, 0, 0);
+    background-color: red;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}

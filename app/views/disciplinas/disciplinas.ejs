@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem das Disciplinas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="alunos/listagemAlunos.css">
+</head>
+
+<body>
+
+       
+    <%-include('../partes/header')%>
+
+    <section class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Ementa</th>
+                    <%if (cargo === "admin"){ %>
+                        <th>Ações</th>
+                    <%}else {%>
+                        <th></th>
+                    <%} %>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i=0; i < JDisciplinas.length; i++){ %>
+                    <tr class="<%= i % 2 === 0 ? 'row-even' : 'row-odd' %>">
+                        <td>
+                            <%= JDisciplinas[i].id_disciplina %>
+                        </td>
+                        <td>
+                            <%= JDisciplinas[i].nome %>
+                        </td>
+                        <td>
+                            <%= JDisciplinas[i].ementa %>
+                        </td>
+
+
+                        <%if (cargo === "admin"){ %>
+                            <td class="buttons">
+                                <a href="/disciplinas/editar?id_disciplina=<%=JDisciplinas[i].id_disciplina%>"  class="edit-btn">     
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+    
+                                
+                                <a href="/disciplinas/excluir?id_disciplina=<%=JDisciplinas[i].id_disciplina%>" class="delete-btn">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        <%} else { %>                   
+                        <td> </td>
+                        <%} %>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </section>
+
+</body>
+
+</html>

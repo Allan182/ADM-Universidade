@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem das Alunos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="alunos/listagemAlunos.css">
+</head>
+
+<body>
+
+   
+    <%-include('../partes/header')%>
+
+    <section class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>Idade</th>
+                    <th>Turma</th>
+
+                    <%if (cargo === "admin"){ %>
+                        <th>Ações</th>
+                    <%} else {%>
+                        <th></th>
+                    <%} %>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i=0; i < JAlunos.length; i++){ %>
+                    <tr class="<%= i % 2 === 0 ? 'row-even' : 'row-odd' %>">
+                        <td>
+                            <%= JAlunos[i].id_aluno %>
+                        </td>
+                        <td>
+                            <%= JAlunos[i].nome %>
+                        </td>
+                        <td>
+                            <%= JAlunos[i].sobrenome %>
+                        </td>
+                        <td>
+                            <%= JAlunos[i].idade %>
+                        </td>
+                        <td>   
+                            <%= JAlunos[i].turma %>
+                        </td>
+
+
+
+                        <%if (cargo === "admin"){ %>
+                            <td class="buttons">
+                                <a href="/alunos/editar?id_aluno=<%=JAlunos[i].id_aluno%>"  class="edit-btn">     
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+    
+                                
+                                <a href="/alunos/excluir?id_aluno=<%=JAlunos[i].id_aluno%>" class="delete-btn">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        <%} else {  %>
+                        <td></td>
+                        <%} %>
+
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+    </section>
+
+</body>
+
+</html>

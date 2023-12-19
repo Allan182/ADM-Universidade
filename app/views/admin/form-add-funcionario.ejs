@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário para inserir novos Alunos</title>
+    <link rel="stylesheet" href="/admin/formAddAluno.css">
+    
+    <link rel="stylesheet" href="/admin/validation.css">
+</head>
+
+<body>
+
+    <%-include('../partes/header')%>
+
+
+        <h1>Formulário para inserir novos Funcionarios </h1>
+
+        <form action="/funcionarios/salvar" method="post" class="student-form">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="Nome do Funcionario"
+                    value="<%= funcionario.nome %>">
+            </div>
+
+            <div class="form-group">
+                <label for="sobrenome">Sobrenome</label>
+                <input type="text" id="sobrenome" name="sobrenome" placeholder="Sobrenome do Funcionario"
+                    value="<%= funcionario.sobrenome %>">
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="cargo"> Cargo </label>
+
+                <select name="cargo" id="cargo">
+                    <option value=""> Selecione ! </option>
+                    <option value="prof"> Prof </option>
+                    <option value="admin"> Admin </option>
+                </select>
+
+            </div>
+
+            <div class="form-group">
+                <label for="login"> Login </label>
+                <input type="text" id="login" name="login" value="<%= funcionario.login %>" placeholder="Login do Funcionario">
+            </div>
+
+            <div class="form-group">
+                <label for="senha"> Senha </label>
+                <input type="text" id="senha" name="senha"  placeholder="Senha do Funcionario"> 
+            </div>
+
+            <input type="submit" value="Enviar" class="submit-btn">
+
+            <div class="<%= validacao.length > 0 ? 'validation' : '' %>">
+
+                <%if(validacao.length>0){%>
+        
+                    <div>
+                        <strong>Atenção!</strong>
+                        <ul>
+                            <%for(let i=0;i<validacao.length;i++){%>
+                                <li>
+                                    <%=validacao[i].msg%>
+                                </li>
+                                <%}%>
+                        </ul>
+                    </div>
+                    <%}%>
+            </div>
+
+        </form>
+
+
+
+      
+
+</body>
+
+</html>

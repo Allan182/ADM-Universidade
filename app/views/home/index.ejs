@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Página Inicial do site</title>
+    <link rel="stylesheet" href="/home/home.css">
+    <title> High School </title>
+</head>
+
+<body>
+    
+    <%-include('../partes/header')%>
+
+    <div class="container">
+
+
+        <div class="card">
+            
+
+            
+        <%if (cargo === "admin"){ %>
+            <a href="/add-alunos">
+                <h2> Cadastro de Alunos </h2>
+            </a>
+        <% } %>
+        
+            <a href="/listar-alunos">
+                <h2> Listar Alunos </h2>
+            </a>
+
+        </div>
+
+        <div class="card">
+
+            <%if (cargo === "admin"){ %>
+                <a href="/add-turma">
+                    <h2> Cadastro de Turmas </h2>
+                </a>
+            <% } %>
+
+            <a href="/listar-turmas">
+                <h2> Listar Turmas </h2>
+            </a>
+
+
+        </div>
+
+        <div class="card">
+
+
+            <%if (cargo === "admin"){ %>
+                <a href="/add-disciplina">
+                    <h2> Cadastro de Disciplinas </h2>
+                </a>
+            <% }%>
+
+            <a href="/listar-disciplinas">
+                <h2> Listar Disciplinas </h2>
+            </a>
+
+        </div>
+
+        <%if (cargo === "admin"){ %>
+        <div class="card">
+     
+                <a href="/add-funcionarios">
+                    <h2> Cadastro de Funcionarios </h2>
+                </a>
+           
+            <a href="/listar-funcionarios">
+                <h2> Listar Funcionarios </h2>
+            </a>
+
+        </div>
+        <% }%>
+
+    </div>
+
+
+</body>
+
+</html>

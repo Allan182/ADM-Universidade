@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário para inserir novos Alunos</title>
+    
+    <link rel="stylesheet" href="/admin/formAddAluno.css">
+    
+    <link rel="stylesheet" href="/admin/validation.css">
+</head>
+
+<body>
+
+    <%-include('../partes/header')%>
+
+
+    <h1>Formulário para inserir novos Alunos</h1>
+
+    <form action="/alunos/salvar" method="post" class="student-form">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Nome do Aluno" value="<%= aluno.nome %>">
+        </div>
+
+        <div class="form-group">
+            <label for="sobrenome">Sobrenome</label>
+            <input type="text" id="sobrenome" name="sobrenome" placeholder="Sobrenome do Aluno"
+                value="<%= aluno.sobrenome %>">
+        </div>
+
+        <div class="form-group">
+            <label for="dataNascimento"> Data de Nascimento</label>
+            <input type="date" id="dataNascimento" name="dataNascimento" value="<%= aluno.dataNasc %>">
+        </div>
+
+        <div class="form-group" >
+            <label for="turmaSelect" > Selecione a Turma:</label>
+            <select  id="turmaSelect" name="id_turma_fk">
+
+                <option value=""> Selecione ! </option>
+
+                <% turmas.forEach(function(turma) { %>
+                    <option value="<%= turma.id_turma %>">
+                        <%= turma.nome %>
+                    </option>
+                    <% }); %>
+            </select>
+        </div>
+
+        
+        <input type="submit" value="Enviar" class="submit-btn">
+
+
+        <div class="<%= validacao.length > 0 ? 'validation' : '' %>">
+
+            <%if(validacao.length>0){%>
+    
+                <div>
+                    <strong>Atenção!</strong>
+                    <ul>
+                        <%for(let i=0;i<validacao.length;i++){%>
+                            <li>
+                                <%=validacao[i].msg%>
+                            </li>
+                            <%}%>
+                    </ul>
+                </div>
+                <%}%>
+        </div>
+        
+    </form>
+
+
+
+
+</body>
+
+</html>

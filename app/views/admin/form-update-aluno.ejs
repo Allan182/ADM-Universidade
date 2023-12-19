@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Aluno</title>
+    <link rel="stylesheet" href="/admin/formEditar.css">
+    <link rel="stylesheet" href="/admin/validation.css">
+</head>
+<body>
+
+    <%-include('../partes/header')%>
+
+    <h1>Editar Aluno</h1>
+    <form action="/atualizarAluno" method="POST">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" value="<%= aluno.nome %>" class="form-control" >
+        </div>
+
+        <div class="form-group">
+            <label for="ementa">Sobrenome:</label>
+            <input type="text" name="sobrenome" class="form-control"  value="<%= aluno.sobrenome %>"> 
+        </div>
+
+        <div class="form-group">
+            <label for="ementa">Data Nascimento:</label>
+            <input type="date" name="dataNascimento"  id="dataNascimento" class="form-control"  value="<%= aluno.dataNascimento %>"> 
+        </div>
+
+        <div class="form-group">
+            <label for="turmaSelect"> Selecione a Turma :</label>
+            <select id="turmaSelect" name="id_turma_FK">
+
+                <option value=""> Selecione ! </option>
+
+                <% for (let i=0; i < aluno.turma.length; i++) { %>
+                    <option value="<%= aluno.turma[i].id_turma %>">
+                        <%= aluno.turma[i].nome %>
+                    </option>
+                    <% } %>
+            </select>
+        </div>
+
+		<input type="hidden" name="id_aluno" value="<%=aluno.id_aluno%>">
+
+
+        <button type="submit" class="btn btn-primary">Editar Alterações</button>
+
+        <div class="<%= validacao.length > 0 ? 'validation' : '' %>">
+
+            <%if(validacao.length>0){%>
+    
+                <div>
+                    <strong>Atenção!</strong>
+                    <ul>
+                        <%for(let i=0;i<validacao.length;i++){%>
+                            <li>
+                                <%=validacao[i].msg%>
+                            </li>
+                            <%}%>
+                    </ul>
+                </div>
+                <%}%>
+        </div>
+    </form>
+
+    <script>
+        var dataAluno = new Date('<%= aluno.dataNascimento%>').toISOString().split('T')[0];
+        document.getElementById('dataNascimento').value = dataAluno;
+    </script>
+
+</body>
+</html>

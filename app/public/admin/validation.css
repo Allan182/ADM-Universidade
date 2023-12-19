@@ -1,0 +1,30 @@
+/* Estilos para a div.validation */
+
+*{
+  box-sizing: border-box; /* Garante que a largura inclua padding e borda */
+  font-family: Arial, sans-serif;
+}
+form .validation {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    background-color: #ffecec;
+  }
+  
+  form .validation strong {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ff0000;
+  }
+  
+  form .validation ul {
+    padding-left: 20px;
+    margin-bottom: 0;
+  }
+  
+  form .validation ul li {
+    color: #ff0000;
+  }
+  

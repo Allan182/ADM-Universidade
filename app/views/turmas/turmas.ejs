@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem das Turmas </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="alunos/listagemAlunos.css">
+</head>
+
+<body>
+
+    <%-include('../partes/header')%>
+
+
+        <section class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Ano</th>
+                        <th>Professor</th>
+                        <th>Disciplina</th>
+                        <%if (cargo === "admin"){ %>
+                        <th>Ações</th>
+                        <%}%>
+                    </tr>
+                </thead>
+
+
+
+                    <tbody>
+                        <% for(let i=0; i < JTurmas.length; i++){ %>
+                            <tr class="<%= i % 2 === 0 ? 'row-even' : 'row-odd' %>">
+
+                              <td><%= JTurmas[i].id_turma %></td>
+                              <td><%= JTurmas[i].nome_turma %></td>
+                              <td><%= JTurmas[i].ano_turma %></td>
+                              <td><%= JTurmas[i].nome_professor %></td>
+                              <td><%= JTurmas[i].nome_disciplina %></td>
+                           
+
+                            <%if (cargo === "admin"){ %>
+
+                                <td class="buttons">
+                                    <a href="/turmas/editar?id_turma=<%=JTurmas[i].id_turma%>" class="edit-btn">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a href="/turmas/excluir?id_turma=<%=JTurmas[i].id_turma%>" class="delete-btn">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </td>
+
+                            <% } %>
+
+                            </tr>
+                            <% } %>
+                    </tbody>
+            </table>
+        </section>
+
+</body>
+
+</html>

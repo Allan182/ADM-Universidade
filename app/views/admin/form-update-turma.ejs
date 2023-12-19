@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Turmas</title>
+    <link rel="stylesheet" href="/admin/formEditar.css">
+    <link rel="stylesheet" href="/admin/validation.css">
+</head>
+
+<body>
+
+    <%-include('../partes/header')%>
+
+
+
+        <h1>Editar Turmas </h1>
+        <form action="/atualizarTurmas" method="POST">
+
+
+                <div class="form-group">
+
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" value="<%=turmas.nome %>" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="ementa">Ano</label>
+                    <input type="text" name="ano" class="form-control" value="<%= turmas.ano %>">
+                </div>
+
+                <div class="form-group">
+                    <label for="turmaSelect"> Selecione a Disciplina:</label>
+                    <select id="turmaSelect" name="id_disciplina_FK">
+
+                        <option value=""> Selecione ! </option>
+
+                        <% for (let i=0; i < turmas.disciplina.length; i++) { %>
+                            <option value="<%= turmas.disciplina[i].id_disciplina %>">
+                                <%= turmas.disciplina[i].nome %>
+                            </option>
+                            <% } %>
+                    </select>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="turmaSelect"> Selecione o Professor :</label>
+                    <select id="turmaSelect" name="id_func_FK">
+
+                        <option value=""> Selecione ! </option>
+
+                        <% for (let i=0; i < turmas.funcionario.length; i++) { %>
+                            <option value="<%= turmas.funcionario[i].id_func %>">
+                                <%= turmas.funcionario[i].nome %>
+                            </option>
+                            <% } %>
+                    </select>
+                </div>
+
+             
+
+
+                <input type="hidden" name="id_turma" value="<%= turmas.id_turma%>">
+
+
+                <button type="submit" class="btn btn-primary">Editar Alterações</button>
+
+                <div class="<%= validacao.length > 0 ? 'validation' : '' %>">
+
+                    <%if(validacao.length>0){%>
+            
+                        <div>
+                            <strong>Atenção!</strong>
+                            <ul>
+                                <%for(let i=0;i<validacao.length;i++){%>
+                                    <li>
+                                        <%=validacao[i].msg%>
+                                    </li>
+                                    <%}%>
+                            </ul>
+                        </div>
+                        <%}%>
+                </div>
+        </form>
+</body>
+
+</html>

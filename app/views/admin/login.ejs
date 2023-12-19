@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title> Login </title>
+    <link href="/home/home.css" rel="stylesheet">
+    <link href="/admin/login.css" rel="stylesheet">
+    <link rel="stylesheet" href="/admin/validation.css">
+
+</head>
+
+<body>
+
+    <header class="header">
+        <h1> High School </h1>
+    </header>
+
+
+    <nav>
+        <div>
+            <div class="navbar-header">
+
+                <img src="" />
+            </div>
+        </div>
+    </nav>
+
+    <section class="login">
+
+        <div class="form-login">
+
+            <form action="/autenticar" method="post">
+
+                <div class="label-input">
+
+                    <div class="box-input">
+                        <label for="usuario">Login:</label>
+                        <input type="text" id="login" name="login" placeholder="Login" value=<%=camposDeUsuario.login%>>
+                    </div>
+
+                    <div class="box-input">
+                        <label for="senha">Senha:</label>
+                        <input type="password" id="senha" name="senha" placeholder="Senha">
+                    </div>
+
+                    <div class="box-submit">
+                        <button type="submit">Entrar</button>
+                    </div>
+
+                    <div class="<%= validacao.length > 0 ? 'validation' : '' %>">
+
+                        <%if(validacao.length>0){%>
+                
+                            <div>
+                                <strong>Atenção!</strong>
+                                <ul>
+                                    <%for(let i=0;i<validacao.length;i++){%>
+                                        <li>
+                                            <%=validacao[i].msg%>
+                                        </li>
+                                        <%}%>
+                                </ul>
+                            </div>
+                            <%}%>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>

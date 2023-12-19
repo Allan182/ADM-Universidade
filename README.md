@@ -1,0 +1,3 @@
+Foi projetado um Sistema de Gestão Acadêmica Universitária no padrão MVC com autenticação de Login diferindo níveis de privilégios, atráves de uma plataforma para oferecer uma experiência completa de gerenciamento. Este sistema proporciona um nível de administradores e professores, permitindo o controle e acesso a informações vitais relacionadas aos alunos, disciplinas, funcionários e turmas. Logo foi indexado em MySQL 4 tabelas contendo relacionamento entre sí e fazendo essa conexão no Back End atráves de NODE.JS e renderização de Objetos retornados por requisições no front com EJS.
+
+Tecnologias / Libs usadas: EJS, Node.JS, Express, Bcrypt, Express Session / Validator, Consign ...
